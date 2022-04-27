@@ -1,6 +1,8 @@
 import './App.css'
 import { useState, useEffect } from 'react'
-// import { HashRouter as Router, Switch, Route } from 'react-router-dom'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
+import Companies from './components/companies/Companies'
+import Navbar from './components/navbar/Navbar'
 const { ethers } = require('ethers')
 
 function App() {
@@ -51,27 +53,21 @@ function App() {
   }
 
   return (
-    <div>
-      <h3>My DAPP</h3>
-
-      {currentAccount ? (
-        <button onClick={onClickDisconnect}>Account:{currentAccount}</button>
-      ) : (
-        <button onClick={onClickConnect}>Connect MetaMask</button>
-      )}
-
-      {currentAccount ? (
-        <div>
-          <h3>Account info</h3>
-          <p>ETH Balance of current account: {balance}</p>
-          <p>
-            Chain Info: ChainId {chainId} name {chainname}
-          </p>
-        </div>
-      ) : (
-        <></>
-      )}
-    </div>
+    <Router>
+      <div className="cl">
+        <Navbar
+          currentAccount={currentAccount}
+          onClickDisconnect={onClickDisconnect}
+          onClickConnect={onClickConnect}
+          balance={balance}
+        />
+        <Route exact path="/" component={Companies} />
+        <Switch>
+          <Route exact path="/donate" component={Companies} />
+        </Switch>
+        {/* <Footer /> */}
+      </div>
+    </Router>
   )
 }
 
