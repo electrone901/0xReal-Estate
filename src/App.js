@@ -2,6 +2,7 @@ import './App.css'
 import { useState, useEffect } from 'react'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 import Companies from './components/companies/Companies'
+import Apartment from './components/apartment/Apartment'
 import Navbar from './components/navbar/Navbar'
 const { ethers } = require('ethers')
 
@@ -63,7 +64,8 @@ function App() {
         />
         <Route exact path="/" component={Companies} />
         <Switch>
-          <Route exact path="/donate" component={Companies} />
+          {/* <Route exact path="/donate" component={Companies} /> */}
+          <Route path="/apartment/:id" component={Apartment} />
         </Switch>
         {/* <Footer /> */}
       </div>

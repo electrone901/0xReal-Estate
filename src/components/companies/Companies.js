@@ -1,5 +1,6 @@
 import React from 'react'
 import './Companies.css'
+import PriceHistory from '../price-history/PriceHistory'
 
 function Companies() {
   const value10 = 10
@@ -81,21 +82,27 @@ function Companies() {
               Agent
             </p>
             <p>
-            <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Available by Appointments
+              <i class="fa fa-calendar-check-o" aria-hidden="true"></i>{' '}
+              Available by Appointments
             </p>
-            We recently bought a NYC
-            apartment - our first time purchasing - and we couldn't be more
-            grateful to have had Grant as our broker. He provided invaluable
-            advice and insight at every…” more Responds in about 2 hours 89
-            locals recently contacted this agent 76 Verified LicenseReal Estate
-            Agents “Efficient” - according to 2 users “My husband and I had the
-            pleasure of working with Grant when planning our move from CA to NYC
-            for this summer. Grant was gracious enough to take his time and show
-            us several…” more Responds in about 2 hours 89 locals recently
-            contacted this agent
+            We recently bought a NYC apartment - our first time purchasing - and
+            we couldn't be more grateful to have had Grant as our broker. He
+            provided invaluable advice and insight at every…” more Responds in
+            about 2 hours 89 locals recently contacted this agent 76 Verified
+            LicenseReal Estate Agents “Efficient” - according to 2 users “My
+            husband and I had the pleasure of working with Grant when planning
+            our move from CA to NYC for this summer. Grant was gracious enough
+            to take his time and show us several…” more Responds in about 2
+            hours 89 locals recently contacted this agent
           </div>
         </div>
       </div>
+
+      <br />
+      <br />
+      <br />
+
+      <PriceHistory />
     </div>
   )
 }
