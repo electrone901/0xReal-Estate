@@ -4,6 +4,7 @@ import TabsNabvar from './TabsNabvar'
 const myImg =
   'https://s3-media0.fl.yelpcdn.com/bphoto/oTMzZGypcGxUkhWGmbBFnw/o.jpg'
 function Apartment() {
+
   return (
     <div className="m-4">
       <h2>Apartment</h2>

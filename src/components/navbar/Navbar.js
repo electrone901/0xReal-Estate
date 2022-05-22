@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Navbar.css'
+import logo from '../../images/logo1.png'
+import UAuth from '@uauth/js'
 
 function Navbar({
   currentAccount,
@@ -7,12 +9,36 @@ function Navbar({
   onClickConnect,
   balance,
 }) {
+  const [udUser, setudUser] = useState('')
+
+  const uauth = new UAuth({
+    clientID: '69c407cc-4663-48af-af8a-4f90592ba307',
+    redirectUri: 'http://localhost:3000',
+  })
+  const loginUD = async (e) => {
+    e.preventDefault()
+    try {
+      const authorization = await uauth.loginWithPopup()
+      const currentUser = authorization.idToken.sub
+      setudUser(currentUser)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  const unstoppableDomainsLogout = () => {
+    console.log('logging out!')
+    uauth.logout().catch((error) => {
+      console.error('profile error:', error)
+    })
+    setudUser('')
+  }
+
   return (
     <div className="m-4">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
           <a href="#" class="navbar-brand">
-            Brand
+            <img src={logo} alt="logo" className="logo" />
           </a>
           <button
             type="button"
@@ -27,11 +53,8 @@ function Navbar({
               <a href="/" class="nav-item nav-link active">
                 Home
               </a>
-              <a href="#" class="nav-item nav-link">
-                About
-              </a>
-              <a href="#" class="nav-item nav-link">
-                Products
+              <a href="/post-apartment" class="nav-item nav-link">
+                Register Apartment
               </a>
             </div>
             <form class="d-flex ms-auto">
@@ -41,21 +64,25 @@ function Navbar({
                 placeholder="Search"
               />
 
-              {currentAccount ? (
+              {udUser ? (
                 <button
                   onClick={onClickDisconnect}
                   className="btn btn-outline-light"
                 >
-                  {currentAccount.substring(0, 5)}...
-                  {currentAccount.substring(38)}
+                  {udUser}
                 </button>
               ) : (
-                <button
-                  onClick={onClickConnect}
-                  className="btn btn-outline-light"
-                >
-                  Connect MetaMask
-                </button>
+                <>
+                  {/* <button
+                    onClick={onClickConnect}
+                    className="btn btn-outline-light"
+                  >
+                    Connect MetaMask
+                  </button> */}
+                  <button onClick={loginUD} className="btn btn-outline-light">
+                    Login with UnstoppableDomains
+                  </button>
+                </>
               )}
             </form>
           </div>

@@ -1,9 +1,11 @@
 import './App.css'
 import { useState, useEffect } from 'react'
-import { HashRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link, Outlet } from 'react-router-dom'
 import Companies from './components/companies/Companies'
 import Apartment from './components/apartment/Apartment'
 import Navbar from './components/navbar/Navbar'
+import PostApartment from './components/post-apartment/PostApartment'
+
 const { ethers } = require('ethers')
 
 function App() {
@@ -48,13 +50,12 @@ function App() {
   }
 
   const onClickDisconnect = () => {
-    console.log('onClickDisConnect')
     setBalance(undefined)
     setCurrentAccount(undefined)
   }
 
   return (
-    <Router>
+    <BrowserRouter>
       <div className="cl">
         <Navbar
           currentAccount={currentAccount}
@@ -62,14 +63,32 @@ function App() {
           onClickConnect={onClickConnect}
           balance={balance}
         />
-        <Route exact path="/" component={Companies} />
-        <Switch>
-          {/* <Route exact path="/donate" component={Companies} /> */}
-          <Route path="/apartment/:id" component={Apartment} />
-        </Switch>
-        {/* <Footer /> */}
+
+        <Routes>
+          <Route path="/" element={<Companies />} />
+          <Route path="apartment/:id" element={<Apartment />} />
+          <Route path="/post-apartment" element={<PostApartment />} />
+        </Routes>
       </div>
-    </Router>
+    </BrowserRouter>
+
+    // <Router>
+    //   <div className="cl">
+    //     <Navbar
+    //       currentAccount={currentAccount}
+    //       onClickDisconnect={onClickDisconnect}
+    //       onClickConnect={onClickConnect}
+    //       balance={balance}
+    //     />
+
+    //     <Switch>
+    //       <Route exact path="/apartment/:id" component={Apartment} />
+    //       <Route exact path="/post-apartment" component={PostApartment} />
+    //       <Route exact path="/" component={Companies} />
+    //     </Switch>
+    //     {/* <Footer /> */}
+    //   </div>
+    // </Router>
   )
 }
 

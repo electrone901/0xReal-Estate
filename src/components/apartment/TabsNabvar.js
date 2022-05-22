@@ -5,6 +5,7 @@ import './Apartment.css'
 import Reviews from '../reviews/Reviews'
 // import Token from '../../abis/Token.json'
 // import Web3 from 'web3'
+import PriceHistory from '../price-history/PriceHistory'
 
 class TabsNabvar extends Component {
   async componentWillMount() {
@@ -96,7 +97,7 @@ class TabsNabvar extends Component {
       dbank: null,
       balance: 0,
       dBankAddress: null,
-      businessName: '',
+      descriptionReview: '',
       businessGoal: '',
       EthAmount: 0,
     }
@@ -109,10 +110,12 @@ class TabsNabvar extends Component {
   }
 
   async handleSubmit(event) {
+    event.preventDefault()
+    console.log('this.state', this.state)
     // event.preventDefault()
     // console.log('-->', this.state)
     // let json = {
-    //   businessName: this.state.businessName,
+    //   descriptionReview: this.state.descriptionReview,
     //   businessGoal: this.state.businessGoal,
     //   EthAmount: this.state.EthAmount,
     // }
@@ -148,12 +151,11 @@ class TabsNabvar extends Component {
                   id="uncontrolled-tab-example"
                   className=""
                 >
-                  <Tab eventKey="deposit" title="Deposit">
+                  <Tab eventKey="deposit" title="Add A Review">
                     <div>
                       <br />
-                      How much you want to deposit?
+                      Please Add Your Review
                       <br />
-                      (1 deposit is possible at the time)
                       <br />
                       <form onSubmit={this.handleSubmit}>
                         <div
@@ -161,57 +163,25 @@ class TabsNabvar extends Component {
                           style={{ textAlign: 'left' }}
                         >
                           <label htmlFor="formGroupExampleInput">
-                            Business Name
+                            Description
                           </label>
                           <input
                             onChange={this.handleChange}
                             type="text"
                             className="form-control"
-                            name="businessName"
-                            placeholder="Web Tacos"
+                            name="descriptionReview"
+                            placeholder="Looking for an apartment in NYC can be a nightmare, but working with Sahar Aubon was an absolute pleasure."
                           />
                         </div>
-                        <div
-                          className="form-group"
-                          style={{ textAlign: 'left' }}
-                        >
-                          <label htmlFor="formGroupExampleInput2">
-                            ETH Amount
-                          </label>
-                          <input
-                            onChange={this.handleChange}
-                            name="EthAmount"
-                            step="0.01"
-                            type="number"
-                            className="form-control"
-                            placeholder="min. amount is 0.01 ETH"
-                          />
-                        </div>
-
-                        <div
-                          className="form-group"
-                          style={{ textAlign: 'left' }}
-                        >
-                          <label htmlFor="formGroupExampleInput2">
-                            Business Goal
-                          </label>
-                          <input
-                            onChange={this.handleChange}
-                            type="text"
-                            className="form-control"
-                            name="businessGoal"
-                            placeholder="Saving for a new Margarita Mix for faster service"
-                          />
-                        </div>
-                        <button className="btn btn-primary">Deposit </button>
+                        <button className="btn btn-primary">Submit </button>
                       </form>
                     </div>
                   </Tab>
 
-                  <Tab eventKey="withdraw" title="Withdraw">
+                  <Tab eventKey="withdraw" title="Add A New Price">
                     <div>
                       <br />
-                      Do you want to withdraw + take interest?
+                      Add A New Price
                       <br />
                       <br />
                       <div>
@@ -226,78 +196,16 @@ class TabsNabvar extends Component {
                     </div>
                   </Tab>
 
-                  <Tab eventKey="token-Earned" title="Tokens-Earned">
+                  <Tab eventKey="token-Earned" title="PriceHistory">
                     <div>
                       <br />
-                      Interest Earned on SVToken
+                      Here Price History
                       <br />
                       <br />
+                      <PriceHistory />
                       <div>
                         <button type="submit" className="btn btn-primary">
                           {this.state.tokenBalance}
-                        </button>
-                      </div>
-                    </div>
-                  </Tab>
-
-                  <Tab eventKey="borrow" title="Borrow">
-                    <div>
-                      <br />
-                      Do you want to borrow tokens?
-                      <br />
-                      <br />
-                      (You'll get 50% of collateral in Tokens)
-                      <br />
-                      <br />
-                      Type collateral amount in ETH
-                      <br />
-                      <br />
-                      <form
-                        onSubmit={(e) => {
-                          e.preventDefault()
-                          let amount = this.borrowAmount.value
-                          amount = amount * 10 ** 18 //convert to wei
-                          this.borrow(amount)
-                        }}
-                      >
-                        <div className="form-group mr-sm2">
-                          <input
-                            id="borrowAmount"
-                            step="0.01"
-                            type="number"
-                            ref={(input) => {
-                              this.borrowAmount = input
-                            }}
-                            className="form-control"
-                            placeholder="amount..."
-                            required
-                          />
-                          <button
-                            type="submit"
-                            className="btn btn-primary"
-                            onClick={(e) => this.withdraw(e)}
-                          >
-                            Borrow
-                          </button>
-                        </div>
-                      </form>
-                    </div>
-                  </Tab>
-
-                  <Tab eventKey="payOff" title="Payoff">
-                    <div>
-                      <br />
-                      Do you want to pay off the loan?
-                      <br />
-                      <br />
-                      (You'll receive your collateral -fee)
-                      <div>
-                        <button
-                          type="submit"
-                          className="btn btn-primary"
-                          onClick={(e) => this.payOff(e)}
-                        >
-                          Payoff
                         </button>
                       </div>
                     </div>
