@@ -135,22 +135,37 @@ class TabsNabvar extends Component {
           style={{ height: '45rem' }}
         >
           <br></br>
-          <h1>Welcome to Unbank</h1>
-          <h6>
-            {this.state?.account
-              ? `Account: ${this.state.account}`
-              : 'Please connect your wallet'}
-          </h6>
-          <br></br>
 
           <div className="row p-4">
             <main role="main" className="col-lg- text-center">
               <div className="content mr-auto ml-auto">
                 <Tabs
-                  defaultActiveKey="deposit"
+                  defaultActiveKey="token-Earned"
                   id="uncontrolled-tab-example"
                   className=""
                 >
+                  <Tab eventKey="token-Earned" title="PriceHistory">
+                    <div>
+                      <br />
+
+                      <br />
+                      <PriceHistory />
+                      <div>
+                        <button type="submit" className="btn btn-primary">
+                          {this.state.tokenBalance}
+                        </button>
+                      </div>
+                    </div>
+                  </Tab>
+                  <Tab eventKey="Reviews" title="Reviews">
+                    <div>
+                      <br />
+                      Your Account Reviews Updating
+                      <br />
+                      <br />
+                      <Reviews />
+                    </div>
+                  </Tab>
                   <Tab eventKey="deposit" title="Add A Review">
                     <div>
                       <br />
@@ -173,7 +188,9 @@ class TabsNabvar extends Component {
                             placeholder="Looking for an apartment in NYC can be a nightmare, but working with Sahar Aubon was an absolute pleasure."
                           />
                         </div>
-                        <button className="btn btn-primary">Submit </button>
+                        <button className="btn btn-primary" disabled>
+                          Submit{' '}
+                        </button>
                       </form>
                     </div>
                   </Tab>
@@ -181,62 +198,29 @@ class TabsNabvar extends Component {
                   <Tab eventKey="withdraw" title="Add A New Price">
                     <div>
                       <br />
-                      Add A New Price
+                      Please Add New Price
                       <br />
                       <br />
-                      <div>
-                        <button
-                          type="submit"
-                          className="btn btn-primary"
-                          onClick={(e) => this.withdraw(e)}
+                      <form onSubmit={this.handleSubmit}>
+                        <div
+                          className="form-group"
+                          style={{ textAlign: 'left' }}
                         >
-                          Withdraw
+                          <label htmlFor="formGroupExampleInput">
+                            New Price
+                          </label>
+                          <input
+                            onChange={this.handleChange}
+                            type="text"
+                            className="form-control"
+                            name="descriptionReview"
+                            placeholder="Looking for an apartment in NYC can be a nightmare, but working with Sahar Aubon was an absolute pleasure."
+                          />
+                        </div>
+                        <button className="btn btn-primary" disabled>
+                          Submit{' '}
                         </button>
-                      </div>
-                    </div>
-                  </Tab>
-
-                  <Tab eventKey="token-Earned" title="PriceHistory">
-                    <div>
-                      <br />
-                      Here Price History
-                      <br />
-                      <br />
-                      <PriceHistory />
-                      <div>
-                        <button type="submit" className="btn btn-primary">
-                          {this.state.tokenBalance}
-                        </button>
-                      </div>
-                    </div>
-                  </Tab>
-                  <Tab eventKey="Reviews" title="Reviews">
-                    <div>
-                      <br />
-                      Your Account Reviews Updating
-                      <br />
-                      <br />
-                      <Reviews />
-                      <div>
-                        <br />
-                        Metamask Wallet
-                        <br />
-                        <button type="submit" className="btn btn-primary">
-                          {this.state.balance}
-                        </button>
-                        <br />
-                        Earned Tokens
-                        <br />
-                        <button type="submit" className="btn btn-primary">
-                          {this.state.tokenBalance}
-                        </button>
-                        <br />
-                        Eth Deposited
-                        <br />
-                        <button type="submit" className="btn btn-primary">
-                          {this.state.depositedBalance}
-                        </button>
-                      </div>
+                      </form>
                     </div>
                   </Tab>
                 </Tabs>

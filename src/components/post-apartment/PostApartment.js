@@ -5,7 +5,7 @@ import { NFTStorage, File } from 'nft.storage'
 import { apiKey } from '../APIKEYS'
 
 function PostApartment() {
-  const history = useNavigate()
+  let navigate = useNavigate()
   const [image, setImage] = useState('')
   const [description, setDescription] = useState(
     "We recently bought a NYC apartment - our first time purchasing - and we couldn't be more grateful to have had Grant as our broker. He provided invaluable advice and insight at every… more Responds in about 2 hours 89 locals recently contacted this agent 76 Verified LicenseReal Estate Agents Efficient - according to 2 users My husband and I had the pleasure of working with Grant when planning our move from CA to NYC for this summer. Grant was gracious enough to take his time and show us several…",
@@ -29,16 +29,11 @@ function PostApartment() {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    console.log(
-      '🚀 image, status, address , company',
-      description,
-      image,
-      status,
-      address,
-      company,
-    )
-
+    if (!image) {
+      alert('All fields are required!')
+    }
     try {
+      // carb email
       const client = new NFTStorage({ token: apiKey })
       const metadata = await client.store({
         name: address,
@@ -46,7 +41,7 @@ function PostApartment() {
         image: new File([image], imageName, { type: imageType }),
       })
       if (metadata) {
-        history.push('/')
+        navigate('/')
       }
     } catch (error) {
       console.log(error)

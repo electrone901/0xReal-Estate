@@ -17,20 +17,51 @@ function PriceHistory() {
         <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>12-12-2021</td>
+            <td>Compass</td>
+            <td>$3,890</td>
           </tr>
           <tr>
             <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
+            <td>10-12-2021</td>
+            <td>Remax Real State</td>
+            <td>$3,890</td>
           </tr>
           <tr>
             <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
+            <td>09-12-2021</td>
+            <td>Compass</td>
+            <td>$3,590</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>07-12-2020</td>
+            <td>Compass</td>
+            <td>$3,190</td>
+          </tr>
+          <tr>
+            <th scope="row">1</th>
+            <td>12-12-2021</td>
+            <td>Compass</td>
+            <td>$3,890</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>10-12-2021</td>
+            <td>Remax Real State</td>
+            <td>$3,890</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>09-12-2021</td>
+            <td>Compass</td>
+            <td>$3,590</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>07-12-2020</td>
+            <td>Compass</td>
+            <td>$3,190</td>
           </tr>
         </tbody>
       </table>

@@ -53,8 +53,10 @@ function Companies() {
     loadsData()
   }, [])
 
-  const details = () => {
-    navigate('apartment/1')
+  const details = (apt) => {
+    navigate(
+      `apartment/bafyreidhdtrbsh2zvadkxrsbebgtfd545yehtmcxrbeo244wnqb5zxkzmu`,
+    )
   }
 
   return (
@@ -78,17 +80,18 @@ function Companies() {
               <div className="col">
                 <div className="d-flex justify-content-between align-items-center">
                   <p className="title">{apt.name}</p>
-                  {/* <Link to={`apartment/:id`} className="btn btn-success">
+                  <p>{apt.cid}</p>
+                  <Link to={`apartment/${apt.cid}`} className="btn btn-success">
                     View Details
-                  </Link> */}
-
+                  </Link>
+{/*
                   <button
                     size="small"
                     onClick={details}
                     className="btn btn-success"
                   >
                     View Details
-                  </button>
+                  </button> */}
                 </div>
 
                 <div className="d-flex justify-content-between align-items-center">
@@ -99,7 +102,7 @@ function Companies() {
                     <i className="fa fa-star rating-color"></i>
                     <i className="fa fa-star"></i>
                   </div>
-                  <p className="">12 Reviews</p>
+                  <p className=""> Reviews</p>
                 </div>
                 <p>
                   <i class="fa fa-check-square"></i> Verified License Real
