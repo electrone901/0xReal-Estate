@@ -8,6 +8,8 @@ function Navbar({
   onClickDisconnect,
   onClickConnect,
   balance,
+  getLatestPrice,
+  addNewPrice,
 }) {
   const [udUser, setudUser] = useState('')
 
@@ -15,6 +17,7 @@ function Navbar({
     clientID: '69c407cc-4663-48af-af8a-4f90592ba307',
     redirectUri: 'http://localhost:3000',
   })
+
   const loginUD = async (e) => {
     e.preventDefault()
     try {
@@ -25,6 +28,7 @@ function Navbar({
       console.error(error)
     }
   }
+
   const unstoppableDomainsLogout = () => {
     console.log('logging out!')
     uauth.logout().catch((error) => {
@@ -53,6 +57,13 @@ function Navbar({
               <a href="/" class="nav-item nav-link active">
                 Home
               </a>
+
+              <button
+                onClick={(e) => addNewPrice(e)}
+                className="btn btn-outline-light"
+              >
+                getLatestPrice
+              </button>
               <a href="/post-apartment" class="nav-item nav-link">
                 Register Apartment
               </a>
@@ -64,21 +75,23 @@ function Navbar({
                 placeholder="Search"
               />
 
-              {udUser ? (
+              {currentAccount ? (
                 <button
                   onClick={onClickDisconnect}
                   className="btn btn-outline-light"
                 >
-                  {udUser}
+                  {currentAccount.substring(0, 8)}..
+                  {currentAccount.substring(32, 24)}
                 </button>
               ) : (
                 <>
-                  {/* <button
-                    onClick={onClickConnect}
+                  <button
+                    onClick={(e) => onClickConnect(e)}
                     className="btn btn-outline-light"
                   >
                     Connect MetaMask
-                  </button> */}
+                  </button>
+
                   <button onClick={loginUD} className="btn btn-outline-light">
                     Login with UnstoppableDomains
                   </button>

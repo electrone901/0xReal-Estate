@@ -11,6 +11,8 @@ function Apartment() {
   const [apt, setApt] = useState('')
   console.log('apt', apt)
 
+
+
   const getMetaData = async () => {
     let data = await fetch(`https://ipfs.io/ipfs/${aptId}/metadata.json`)
     data = await data.json()

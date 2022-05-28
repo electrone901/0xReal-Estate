@@ -1,11 +1,9 @@
 import { Tabs, Tab } from 'react-bootstrap'
-// import dBank from '../../abis/dBank.json'
 import React, { Component } from 'react'
 import './Apartment.css'
 import Reviews from '../reviews/Reviews'
-// import Token from '../../abis/Token.json'
-// import Web3 from 'web3'
 import PriceHistory from '../price-history/PriceHistory'
+import DataFromCovalent from '../apartment/DataFromCovalent'
 
 class TabsNabvar extends Component {
   async componentWillMount() {
@@ -155,6 +153,12 @@ class TabsNabvar extends Component {
                           {this.state.tokenBalance}
                         </button>
                       </div>
+                    </div>
+                  </Tab>
+                  <Tab eventKey="DataFromCovalent" title="DataFromCovalent">
+                    <div>
+                      <br />
+                      <DataFromCovalent />
                     </div>
                   </Tab>
                   <Tab eventKey="Reviews" title="Reviews">
