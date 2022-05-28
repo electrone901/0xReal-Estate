@@ -36,6 +36,9 @@ Easily collect accure information that is available to the public using blockcha
 We use:
 IPFS NFTStorage: stores NFT's image, name, location, prices,reviews and metadata. The way it works is whenever the user is registering a project the information get pass to NFTStorage IPFS then the NFTStorage generates a hash called CID that is stored on the smart contract. The CID will be used to retrieve the NFT's data
 
+Polygon, Matic Network: the network we deployed our app.
+Address deployed to: 0x71f5338032576962c55c31ED4cF4688D1a1c6b1A
+
 AVAX Network: the network I deployed the app.
 
 Covalent API for a quick way to fetch and retrieve NFTs and contract transaction history in a sealess way.

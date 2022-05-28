@@ -22,12 +22,12 @@ module.exports = {
     hardhat: {
       chainId: 43113,
     },
-    // matic: {
-    //   url: 'https://rpc-mumbai.maticvigil.com',
-    //   accounts: [
-    //     'a94b13a69756cb84833978359e6eae91cde82135a7501444f3989b4b6b4cea1d',
-    //   ],
-    // },
+    matic: {
+      url: 'https://matic-mumbai.chainstacklabs.com',
+      accounts: [
+        'a94b13a69756cb84833978359e6eae91cde82135a7501444f3989b4b6b4cea1d',
+      ],
+    },
     avalanche: {
       url: 'https://api.avax-test.network/ext/bc/C/rpc',
       accounts: [
