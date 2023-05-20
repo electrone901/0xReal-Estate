@@ -14,8 +14,9 @@ function Navbar({
   const [udUser, setudUser] = useState('')
 
   const uauth = new UAuth({
-    clientID: '69c407cc-4663-48af-af8a-4f90592ba307',
-    redirectUri: 'http://localhost:3000',
+    clientID: '0f36b47d-8528-4fa6-a84f-6ab3407b40c2',
+    // redirectUri: 'http://localhost:3000',
+    redirectUri: 'https://apartment-reviwer-app.netlify.app/',
   })
 
   const loginUD = async (e) => {
@@ -23,6 +24,10 @@ function Navbar({
     try {
       const authorization = await uauth.loginWithPopup()
       const currentUser = authorization.idToken.sub
+      console.log(
+        '🚀 ~ file: Navbar.js ~ line 26 ~ loginUD ~ currentUser',
+        currentUser,
+      )
       setudUser(currentUser)
     } catch (error) {
       console.error(error)
@@ -75,13 +80,12 @@ function Navbar({
                 placeholder="Search"
               />
 
-              {currentAccount ? (
+              {udUser ? (
                 <button
                   onClick={onClickDisconnect}
                   className="btn btn-outline-light"
                 >
-                  {currentAccount.substring(0, 8)}..
-                  {currentAccount.substring(32, 24)}
+                  {udUser}
                 </button>
               ) : (
                 <>
